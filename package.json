@@ -1,0 +1,15 @@
+{
+  "name": "think-twise-api",
+  "version": "1.0.0",
+  "description": "api to handle requests to ibm services",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ameno",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "watson-developer-cloud": "^2.14.4"
+  }
+}
