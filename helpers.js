@@ -1,7 +1,6 @@
 /**
  * Created by ameno on 1/4/17.
  */
-const colors = require('colors');
 
 function getLabels(tone){
     return tone.tone_name;
