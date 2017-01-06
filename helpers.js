@@ -7,7 +7,7 @@ function getLabels(tone){
 }
 
 function getScores(tone){
-    return (tone.score * 100).toFixed(2);
+    return parseFloat((tone.score * 100).toFixed(2));
 }
 
 function getDocumentAnalytics (toneCategory){
