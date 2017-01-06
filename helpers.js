@@ -10,6 +10,24 @@ function getScores(tone){
     return parseFloat((tone.score * 100).toFixed(2));
 }
 
+function getMaxScoreAndValue(scoresArray, namesArray){
+    // figure out way to improve this. No need to call math.max twice!!
+    return {
+        'score' : Math.max(...scoresArray),
+        'name' : namesArray[scoresArray.indexOf(Math.max(...scoresArray))]
+    }
+}
+
+// var scores = sentence.tone.emotion_tone.scores;
+// var names = sentence.tone.emotion_tone.names;
+//
+// var emotionalMaxScore = Math.max(...scores);
+// var emotionalMaxScoreName = names[scores.indexOf(emotionalMaxScore)];
+// var languageMaxScore = Math.max(...sentence.tone.language_tone.scores);
+// var languageMaxName = Math.max(...sentence.tone.language_tone.scores);
+// var socialMaxScore = Math.max(...sentence.tone.social_tone.scores);
+// var socialMaxName = Math.max(...sentence.tone.social_tone.scores);
+
 function getDocumentAnalytics (toneCategory){
     let documentScores = {};
     toneCategory.map(function(item){
@@ -17,6 +35,8 @@ function getDocumentAnalytics (toneCategory){
             'names': item.tones.map(getLabels),
             'scores': item.tones.map(getScores),
         };
+
+        documentScores[item.category_id]['max'] = getMaxScoreAndValue(documentScores[item.category_id].scores, documentScores[item.category_id].names);
     });
 
     return documentScores;
@@ -30,7 +50,6 @@ function getSentenceAnalytics (sentences){
                 'text': item.text,
                 'tone': getDocumentAnalytics(item.tone_categories),
             });
-            console.log(sentenceScores[0].tone);
         });
     }
     return sentenceScores;
