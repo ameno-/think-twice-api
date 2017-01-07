@@ -15,7 +15,6 @@ const tone_analyzer = watson.tone_analyzer({
 });
 
 app.get('/:text', function (req, res) {
-    // const sample =  "My man Inf left a Tec and a nine at my crib Turned himself in, he had to do a bid A one-to-three, he be home the end of \'93 I\'m ready to get this paper, G, you with me? Motherfucking right, my pocket\'s looking kind of tight and I'm stressed, yo Biggie let me get the vest No need for that, just grab the fucking gat, The first pocket that\'s fat the Tec is to his back. Word is bond, I\'m a smoke him yo don\'t fake no moves (what?). Treat it like boxing: stick and move, stick and move";
     tone_analyzer.tone({ text: req.params.text },
         (err, tone) => {
             if (err){
@@ -29,5 +28,5 @@ app.get('/:text', function (req, res) {
 });
 
 app.listen(process.env.PORT || 3000, function () {
-    console.log('Think twice is running on yo mamas port');
+    console.log('Think twice is running on', process.env.PORT || 3000);
 });
