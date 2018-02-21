@@ -11,22 +11,11 @@ function getScores(tone){
 }
 
 function getMaxScoreAndValue(scoresArray, namesArray){
-    // figure out way to improve this. No need to call math.max twice!!
     return {
         'score' : Math.max(...scoresArray),
         'name' : namesArray[scoresArray.indexOf(Math.max(...scoresArray))]
     }
 }
-
-// var scores = sentence.tone.emotion_tone.scores;
-// var names = sentence.tone.emotion_tone.names;
-//
-// var emotionalMaxScore = Math.max(...scores);
-// var emotionalMaxScoreName = names[scores.indexOf(emotionalMaxScore)];
-// var languageMaxScore = Math.max(...sentence.tone.language_tone.scores);
-// var languageMaxName = Math.max(...sentence.tone.language_tone.scores);
-// var socialMaxScore = Math.max(...sentence.tone.social_tone.scores);
-// var socialMaxName = Math.max(...sentence.tone.social_tone.scores);
 
 function getDocumentAnalytics (toneCategory){
     let documentScores = {};
@@ -61,63 +50,3 @@ exports.getAnalytics = (tone) => {
         'sentenceAnalysis': getSentenceAnalytics(tone.sentences_tone),
     };
 };
-
-// Data model:
-/*
-{
-     "documentAnalysis": {
-         "emotion_tone": {
-             "names": [],
-             "scores": []
-         },
-         "language_tone": {
-             "names": [],
-             "scores": []
-         },
-         "social_tone": {
-             "names": [],
-             "scores": []
-         }
- },
-     "sentenceAnalysis": [
-        {
-         "text": "... sentence text ...",
-         "tone": {
-            "emotion_tone": {
-                "names": [],
-                "scores": []
-             },
-            "language_tone": {
-                "names": [],
-                "scores": []
-             },
-            "social_tone": {
-                "names": [],
-                "scores": []
-            },
-         }
-        },
-        {
-         "text": "... sentence text ...",
-         "tone": {
-             "emotion_tone": {
-                 "names": [],
-                 "scores": []
-             },
-             "language_tone": {
-                 "names": [],
-                 "scores": []
-             },
-             "social_tone": {
-                 "names": [],
-                 "scores": []
-             },
-         }
-        },
-     ]
- }
-*
-*
-*
-*
-* */
